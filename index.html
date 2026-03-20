@@ -8,105 +8,202 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root { --neon-pink: #ff007f; }
-        body { background-color: #000; color: #fff; font-family: 'Roboto', sans-serif; scroll-behavior: smooth; }
+        :root {
+            --neon-pink: #ff007f;
+            --pure-black: #000000;
+        }
+
+        body {
+            background-color: var(--pure-black);
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+
         .rock-font { font-family: 'Permanent Marker', cursive; }
-        .hero-section { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #111 0%, #000 100%); }
-        .price-card { background: #050505; border: 1px solid #111; border-left: 4px solid var(--neon-pink); }
+
+        .hero-section {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .category-title {
+            border-bottom: 1px solid #222;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            font-size: 0.7rem;
+            color: #555;
+            text-transform: uppercase;
+        }
+
+        .price-card {
+            background: #050505;
+            border: 1px solid #111;
+            border-left: 3px solid var(--neon-pink);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .price-card:hover {
+            background: #0a0a0a;
+            transform: translateX(4px);
+        }
+
         .highlight-text { color: var(--neon-pink); }
-        .price-tag { font-family: 'Permanent Marker', cursive; color: var(--neon-pink); font-size: 1.5rem; }
-        .fernet-price { font-family: 'Permanent Marker', cursive; color: var(--neon-pink); font-size: 1.8rem; }
-        .combo-container { border: 2px solid #1a1a1a; padding: 2rem; border-radius: 15px; background: #050505; }
-        .map-btn { display: flex; align-items: center; justify-content: center; padding: 1rem; border-radius: 12px; font-weight: 900; text-transform: uppercase; font-size: 0.75rem; transition: 0.3s; }
+
+        .price-tag {
+            font-family: 'Permanent Marker', cursive;
+            color: var(--neon-pink);
+            font-size: 1.4rem;
+        }
+
+        .combo-container {
+            border: 2px solid #1a1a1a;
+            padding: 2rem;
+            border-radius: 12px;
+            background: #050505;
+            height: 100%;
+        }
+
+        .map-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            transition: 0.3s;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navegación Móvil -->
-    <nav class="fixed w-full z-50 bg-black/90 border-b border-zinc-900 px-6 py-4 flex justify-between items-center">
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-black/95 border-b border-zinc-900 px-6 py-4 flex justify-between items-center">
         <div class="text-xl rock-font">FLASH <span class="highlight-text">POINT</span></div>
-        <div class="flex space-x-4">
+        <div class="flex space-x-5">
             <a href="#ubicacion" class="text-white"><i class="fas fa-location-dot"></i></a>
             <a href="https://www.instagram.com/flashpoint.bar?igsh=YTVreHczd2J0Zmt6" target="_blank" class="text-pink-500"><i class="fab fa-instagram"></i></a>
         </div>
     </nav>
 
     <!-- Hero -->
-    <header class="hero-section px-6 pt-20">
-        <h1 class="text-6xl rock-font mb-2 uppercase tracking-tighter text-center">FLASH <span class="highlight-text">POINT</span></h1>
-        <p class="text-lg font-black tracking-widest uppercase italic text-zinc-500 mb-8 text-center">Estación Rock · Mendoza</p>
-        <div class="flex flex-col items-center space-y-4">
-            <a href="#ubicacion" class="text-[11px] font-black uppercase tracking-widest bg-zinc-900 px-4 py-2 rounded-full border border-zinc-800">
-                <i class="fas fa-location-dot mr-2"></i> Av. San Martin 1020
-            </a>
-        </div>
+    <header class="hero-section px-6">
+        <h1 class="text-6xl md:text-8xl rock-font mb-4 uppercase tracking-tighter">FLASH <span class="highlight-text">POINT</span></h1>
+        <p class="text-lg md:text-xl font-black tracking-[0.3em] uppercase italic text-zinc-600 mb-8">Estación Rock · Mendoza</p>
+        <a href="#ubicacion" class="text-[10px] font-black uppercase tracking-[0.3em] border border-zinc-800 px-4 py-2 rounded-full">
+            <i class="fas fa-location-dot mr-2"></i> Av. San Martin 1020
+        </a>
     </header>
 
-    <!-- Birras -->
+    <!-- Cervezas Completo -->
     <section id="cervezas" class="py-20 px-6 max-w-4xl mx-auto">
-        <h2 class="text-4xl rock-font mb-10 uppercase italic">BIRRAS</h2>
-        <div class="grid gap-3">
-            <div class="price-card p-4 flex justify-between items-center">
-                <span class="font-black uppercase text-xs">Andes</span>
-                <span class="price-tag">$5.000</span>
+        <div class="text-center mb-16">
+            <h2 class="text-5xl rock-font mb-2 italic">BIRRAS</h2>
+            <div class="h-1 w-20 bg-pink-600 mx-auto"></div>
+        </div>
+
+        <!-- Nacionales -->
+        <div class="mb-12">
+            <h3 class="category-title">Cervezas Nacionales</h3>
+            <div class="grid gap-2">
+                <div class="price-card"><span>Andes</span><span class="price-tag">$5.000</span></div>
+                <div class="price-card"><span>Budweiser</span><span class="price-tag">$5.200</span></div>
+                <div class="price-card"><span>Quilmes Clásica / IPA / Stout</span><span class="price-tag">$5.200</span></div>
+                <div class="price-card"><span>Quilmes 1890</span><span class="price-tag">$5.600</span></div>
+                <div class="price-card"><span>Quilmes Bajo Cero</span><span class="price-tag">$5.800</span></div>
             </div>
-            <div class="price-card p-4 flex justify-between items-center">
-                <span class="font-black uppercase text-xs">Quilmes Clásica / IPA / Stout</span>
-                <span class="price-tag">$5.200</span>
+        </div>
+
+        <!-- Andes Origen -->
+        <div class="mb-12">
+            <h3 class="category-title" style="color: #d97706;">Andes Origen</h3>
+            <div class="grid gap-2">
+                <div class="price-card" style="border-left-color: #d97706;"><span>Rubia / Roja / IPA</span><span class="price-tag" style="color: #d97706;">$6.600</span></div>
             </div>
-            <div class="price-card p-4 flex justify-between items-center border-l-blue-400">
-                <span class="font-black uppercase text-xs text-blue-400">Patagonia (Todas)</span>
-                <span class="price-tag">$7.900</span>
+        </div>
+
+        <!-- Premium -->
+        <div class="mb-12">
+            <h3 class="category-title" style="color: #fff;">Premium & Especiales</h3>
+            <div class="grid gap-2">
+                <div class="price-card" style="border-left-color: #fff;"><span>Stella Artois</span><span class="price-tag" style="color: #fff;">$8.000</span></div>
+                <div class="price-card" style="border-left-color: #60a5fa;"><span>Patagonia (Todas las variedades)</span><span class="price-tag" style="color: #60a5fa;">$7.900</span></div>
+                <div class="price-card" style="border-left-color: #fbbf24;"><span>Corona</span><span class="price-tag" style="color: #fbbf24;">$7.700</span></div>
             </div>
         </div>
     </section>
 
     <!-- Fernet -->
     <section id="fernet" class="bg-zinc-950 py-20 px-6 border-y border-zinc-900">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-5xl rock-font mb-10 uppercase italic">FERNET <br><span class="highlight-text">BRANCA</span></h2>
-            <div class="space-y-4">
-                <div class="bg-zinc-900 p-5 flex justify-between items-center rounded-lg">
-                    <span class="font-black">VASO 354ml</span>
-                    <span class="fernet-price">$8.000</span>
-                </div>
-                <div class="bg-zinc-900 p-5 flex justify-between items-center rounded-lg border-l-4 border-pink-600">
-                    <span class="font-black">VASO 1L</span>
-                    <span class="fernet-price">$15.000</span>
+        <div class="max-w-xl mx-auto">
+            <h2 class="text-5xl rock-font mb-10 text-center italic">FERNET <span class="highlight-text">BRANCA</span></h2>
+            <div class="space-y-3">
+                <div class="price-card"><span>Vaso 354ml</span><span class="price-tag">$8.000</span></div>
+                <div class="price-card" style="border-left-width: 8px;"><span>Vaso 1L</span><span class="price-tag">$15.000</span></div>
+                <div class="price-card bg-white !text-black">
+                    <span class="font-black italic">JARRA 1.25L (Para compartir)</span>
+                    <span class="price-tag">$18.000</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Combos -->
-    <section id="combos" class="py-20 px-6 max-w-4xl mx-auto">
-        <h2 class="text-4xl rock-font mb-10 text-center italic">COMBOS</h2>
-        <div class="grid gap-6">
+    <section id="combos" class="py-20 px-6 max-w-5xl mx-auto">
+        <h2 class="text-4xl rock-font mb-10 text-center italic uppercase">Combos Promo</h2>
+        <div class="grid md:grid-cols-3 gap-4">
             <div class="combo-container">
-                <h3 class="text-2xl rock-font mb-4">COMBO FERNET</h3>
-                <p class="text-zinc-500 text-xs font-bold uppercase mb-4">BRANCA 750ml + COCA 2.5L</p>
-                <span class="text-4xl rock-font">$35.000</span>
-                <p class="text-[9px] text-zinc-600 mt-2 uppercase font-black">No incluye hielo</p>
+                <h4 class="rock-font text-2xl mb-2">FERNET</h4>
+                <p class="text-[10px] text-zinc-500 font-bold mb-4 uppercase">Branca 750ml + Coca 2.5L</p>
+                <div class="text-3xl rock-font">$35.000</div>
+                <p class="text-[8px] text-zinc-700 mt-2 font-black uppercase tracking-tighter">No incluye hielo</p>
+            </div>
+            <div class="combo-container">
+                <h4 class="rock-font text-2xl mb-2">SKYY SPRITE</h4>
+                <p class="text-[10px] text-zinc-500 font-bold mb-4 uppercase">Skyy a elección + Sprite 1.5L</p>
+                <div class="text-3xl rock-font">$25.000</div>
+                <p class="text-[8px] text-zinc-700 mt-2 font-black uppercase tracking-tighter">No incluye hielo</p>
+            </div>
+            <div class="combo-container">
+                <h4 class="rock-font text-2xl mb-2 text-blue-400">SKYY SPEED</h4>
+                <p class="text-[10px] text-zinc-500 font-bold mb-4 uppercase">Skyy a elección + 4 Latas Speed</p>
+                <div class="text-3xl rock-font text-blue-400">$30.000</div>
+                <p class="text-[8px] text-zinc-700 mt-2 font-black uppercase tracking-tighter">No incluye hielo</p>
             </div>
         </div>
     </section>
 
     <!-- Ubicación -->
-    <section id="ubicacion" class="py-20 px-6 text-center">
-        <h2 class="text-4xl rock-font mb-8 italic">UBICACIÓN</h2>
-        <div class="bg-zinc-900 p-8 rounded-2xl max-w-md mx-auto">
-            <i class="fas fa-location-dot text-4xl mb-4 highlight-text"></i>
-            <p class="font-black uppercase text-sm mb-8">Av. San Martin 1020<br>Mendoza, Argentina</p>
-            <div class="flex flex-col gap-3">
-                <a href="https://maps.app.goo.gl/y43y12pogssEFT4r7?g_st=ic" class="map-btn bg-white text-black">Google Maps</a>
-                <a href="https://maps.apple/p/29suZ4WF9dc5d~" class="map-btn bg-zinc-800 text-white">Apple Maps</a>
+    <section id="ubicacion" class="py-20 px-6 text-center bg-zinc-950">
+        <h2 class="text-4xl rock-font mb-10 italic">UBICACIÓN</h2>
+        <div class="bg-black p-10 rounded-3xl max-w-lg mx-auto border border-zinc-900">
+            <i class="fas fa-location-dot text-5xl mb-6 highlight-text"></i>
+            <p class="font-black uppercase tracking-widest text-sm mb-2">Av. San Martin 1020</p>
+            <p class="text-zinc-500 text-xs mb-10 uppercase font-bold">Mendoza, Argentina</p>
+            <div class="grid gap-3">
+                <a href="https://maps.app.goo.gl/y43y12pogssEFT4r7?g_st=ic" target="_blank" class="map-btn bg-white text-black"><i class="fab fa-google mr-2"></i> Google Maps</a>
+                <a href="https://maps.apple/p/29suZ4WF9dc5d~" target="_blank" class="map-btn bg-zinc-800 text-white"><i class="fab fa-apple mr-2"></i> Apple Maps</a>
             </div>
         </div>
     </section>
 
-    <footer class="py-10 text-center border-t border-zinc-900">
-        <p class="rock-font text-2xl opacity-50 uppercase">FLASH POINT</p>
-        <p class="text-[8px] opacity-20 font-black mt-4 uppercase tracking-[0.3em]">Beber con moderación. +18</p>
+    <footer class="py-12 text-center border-t border-zinc-900 bg-black">
+        <div class="rock-font text-3xl mb-4">FLASH POINT</div>
+        <p class="text-[8px] opacity-30 font-black uppercase tracking-[0.4em]">Beber con moderación. Prohibida su venta a menores de 18 años.</p>
     </footer>
 
 </body>
